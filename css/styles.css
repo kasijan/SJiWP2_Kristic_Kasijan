@@ -599,6 +599,7 @@ progress {
 }
 
 .img-fluid {
+  margin-left: 35px;
   max-width: 100%;
   height: auto;
 }
