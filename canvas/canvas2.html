@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<canvas id="myCanvas" width="1500" height="600" style="border: 2px solid black; background-color: black;"></canvas>
+
+<script>
+        let c = document.getElementById("myCanvas");
+        let ctx = c.getContext("2d");
+
+        /* Krug */
+        ctx.beginPath();
+        ctx.arc(300, 300, 300, 0, 2*Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+
+        ctx.beginPath();
+        ctx.moveTo(300, 300);
+        ctx.lineTo(620, 0);
+        ctx.lineTo(660, 700);
+        ctx.lineTo(300, 300);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+         ctx.beginPath();
+        ctx.arc(330, 170, 30, 0, 2*Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(500, 300, 30, 0, 2*Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+        ctx.beginPath();
+
+        ctx.arc(600, 300, 30, 0, 2*Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+
+        ctx.arc(700, 300, 30, 0, 2*Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+
+        ctx.arc(800, 300, 30, 0, 2*Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+
+        ctx.beginPath();
+        ctx.arc(344, 165, 10, 0, 2*Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+       
+
+        ctx.arc(1200, 250, 150, 0, 2*Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+        
+
+        </script>
+
+
+
+</body>
+</html>
