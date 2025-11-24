@@ -22,7 +22,8 @@ updateAttempts();
 function checkNumber(event){
 event.preventDefault(); //ne osvjezava stranicu
 let value = parseInt(input.value); 
-console.log(value);}
+/* console.log(value); */
+}
 
 function newGame(){
 
