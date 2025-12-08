@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text utilites alat</title>
+
+<style>
+
+    body{
+
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }   
+
+    #text{
+
+        color: white;
+        padding: 8px;
+        margin: 5px 0;
+        font-size: 16px;
+        background-color: rgb(22, 22, 22);
+        border-radius: 5%;
+        border-radius: 5%;
+
+    }
+
+    button{
+
+        color: black;
+        padding: 8px;
+        margin: 5px 0;
+        font-size: 16px;
+        background-color: beige;
+        border-radius: 5%;
+    }
+
+    #rezultat{
+
+        text-align: center;
+        border: solid white 2px;
+
+        height: 200px;
+        width: 300px;
+        font-size: 3rem;
+        padding-top: 100px;
+        margin-left: 800px;
+        
+    }
+
+</style>
+
+</head>
+<body>
+
+    <h2>Text utilites alat</h2>
+
+    <label for="text">Unesite text:</label>
+    <input type="text" id="text" style="width: 150px; padding-right: 20px;">
+    
+    
+    <div style="margin-top: 20px;">
+    <button onclick="brojZnamenki()">Broj znamenki</button>
+    <button onclick="uVelika()">U velika</button>
+    <button onclick="uMala()">U mala</button>
+    <button onclick="prvoSlovo()">Veliko prvo pocetno</button>
+    </div>
+
+    <h3>Rezultat:</h3>
+    <p id="rezultat"></p>    
+    <script src="./index.js"></script>
+</body>
+</html>
