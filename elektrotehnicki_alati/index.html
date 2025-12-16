@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Elektrotehnički kalkulator</title>
+</head>
+<body>
+
+<h1 class="title">Elektrotehnički kalkulator</h1>
+
+
+<!-- ohmov kalk-->
+
+
+<section class="section ohmov-zakon">
+    <h2>Ohmov zakon</h2>
+
+    <label>Otpor R (Ω)</label>
+    <input type="number" class="input ohm-r">
+    <br>
+
+    <label>Napon U (V)</label>
+    <input type="number" class="input ohm-u">
+    <br>
+
+    <button class="btn ohm-calc">Izračunaj struju</button>
+
+    <p>Struja I (A): <span class="result ohm-i"></span></p>
+
+
+    <img src="./Jednostavan_strujni_krug_-_desktop_8bca422e-6dbf-4b86-b24d-b69d3e9d2ad0_g2zmn1.webp" alt="Ohmov zakon slika" width="300">
+</section>
+
+<hr>
+
+<!-- djelilo napona -->
+
+
+<section class="section dijelilo-napona">
+    <h2>Dijelilo napona</h2>
+
+    <label>R1 (Ω)</label>
+    <input type="number" class="input divider-r1">
+    <br>
+
+    <label>R2 (Ω)</label>
+    <input type="number" class="input divider-r2">
+    <br>
+
+    <label>Ulazni napon U<sub>ul</sub> (V)</label>
+    <input type="number" class="input divider-uul">
+    <br>
+
+    <button class="btn divider-calc">Izračunaj izlazni napon</button>
+    <br>
+
+    <p>Izlazni napon U<sub>izl</sub> (V):
+        <span class="result divider-uizl"></span>
+    </p>
+
+    <img src="./voltage-divider-main-circuit.png" alt="divider">
+
+</section>
+
+<hr>
+
+
+<!-- otpornici -->
+
+<section class="section otpornici">
+    <h2>Otpornici</h2>
+
+    <h3>Serijsko spajanje</h3>
+    <label>R1 (Ω)</label>
+    <input type="number" class="input series-r1">
+    <br>
+    <label>R2 (Ω)</label>
+    <input type="number" class="input series-r2">
+    <br>
+    <button class="btn series-r-calc">Izračunaj</button>
+    <br>
+    <p>R<sub>uk</sub> (Ω): <span class="result series-ruk"></span></p>
+    <img src="./200px-Resistor_symbol_Americasvg.png" alt="serijski otpornik" width="400px">
+    <br>
+
+    
+
+    <h3>Paralelno spajanje</h3>
+    <label>R1 (Ω)</label>
+    <input type="number" class="input parallel-r1">
+    <br>
+    <label>R2 (Ω)</label>
+    <input type="number" class="input parallel-r2">
+    <br>
+    <button class="btn parallel-r-calc">Izračunaj</button>
+    <br>
+    <p>R<sub>uk</sub> (Ω): <span class="result parallel-ruk"></span></p>
+    <img src="./Parallel_Resistor_Drawing.jpg" alt="Paralelno spajanje otpornika" width="400px">
+    <br>
+</section>
+
+<hr>
+
+<!-- zavojnice -->
+
+<section class="section zavojnice">
+    <h2>Zavojnice (L)</h2>
+
+    <h3>Serijsko spajanje</h3>
+    <label>L1 (H)</label>
+    <input type="number" class="input series-l1">
+    <br>
+    <label>L2 (H)</label>
+    <input type="number" class="input series-l2">
+    <br>
+    <button class="btn series-l-calc">Izračunaj</button>
+    <br>
+    <p>L<sub>uk</sub> (H): <span class="result series-luk"></span></p>
+    <img src="./images.jpg" alt="serijsko" width="400px">
+    <br>
+
+    <h3>Paralelno spajanje</h3>
+    <label>L1 (H)</label>
+    <input type="number" class="input parallel-l1">
+    <br>
+    <label>L2 (H)</label>
+    <input type="number" class="input parallel-l2">
+    <br>
+    <button class="btn parallel-l-calc">Izračunaj</button>
+    <br>
+    <p>L<sub>uk</sub> (H): <span class="result parallel-luk"></span></p>
+
+    <img src="./ind26.webp" alt="paralelno" width="400px">
+    <br>
+</section>
+
+<hr>
+
+
+ <!-- kondenzatori -->
+
+
+<section class="section kondenzatori">
+    <h2>Kondenzatori (C)</h2>
+
+    <h3>Serijsko spajanje</h3>
+    <label>C1 (F)</label>
+    <input type="number" class="input series-c1">
+    <br>
+    <label>C2 (F)</label>
+    <input type="number" class="input series-c2">
+    <br>
+    <button class="btn series-c-calc">Izračunaj</button>
+    <br>
+    <p>C<sub>uk</sub> (F): <span class="result series-cuk"></span></p>
+    <img src="./Capacitors-in-Series.webp" alt="serijsko spajanje kondenzatora" width="400px">
+    <br>
+
+    <h3>Paralelno spajanje</h3>
+    <label>C1 (F)</label>
+    <input type="number" class="input parallel-c1">
+    <br>
+    <label>C2 (F)</label>
+    <input type="number" class="input parallel-c2">
+    <br>
+    <button class="btn parallel-c-calc">Izračunaj</button>
+    <p>C<sub>uk</sub> (F): <span class="result parallel-cuk"></span></p>
+    <img src="./images.png" alt="paralelno spajanje kondenzatora" width="400px">
+</section>
+
+<hr>
+
+
+
+<!-- induktivitet zavojnice -->
+
+<section class="section induktivitet-zavojnice">
+    <h2>Induktivitet zavojnice</h2>
+
+    <label>Broj zavoja N</label>
+    <input type="number" class="input coil-n" min="1" step="1">
+    <br>
+
+    <label>Površina presjeka S (cm²)</label>
+    <input type="number" class="input coil-s" step="any">
+    <br>
+
+    <label>Duljina zavojnice l (cm)</label>
+    <input type="number" class="input coil-l" step="any">
+    <br>    
+
+    <button class="btn coil-calc">Izračunaj induktivitet</button>
+    <br>
+
+    <p>Induktivitet L (H): <span class="result coil-l-result"></span></p>
+    <br>
+
+    <small class="help">formula L = μ·N²·S/l koristi SI jedinice (S u m², l u m). Ako se unosi u cm/cm², skripta treba pretvoriti vrijednosti u m/m² prije izračuna.</small>
+</section>
+
+
+
+<!-- induktivni otpor -->
+
+<section class="section induktivni-otpor">
+    <h2>Induktivni otpor</h2>
+
+    <label>Frekvencija f (Hz)</label>
+    <input type="number" class="input inductive-f">
+    <br>
+
+    <label>Induktivnost L (H)</label>
+    <input type="number" class="input inductive-l">
+    <br>
+
+    <button class="btn inductive-x-calc">Izračunaj X<sub>L</sub></button>
+    <br>
+
+    <p>X<sub>L</sub> (Ω): <span class="result inductive-xl"></span></p>
+    <br>
+</section>
+
+<hr>
+
+<!-- kapacitivni otpor -->
+
+
+<section class="section kapacitivni-otpor">
+    <h2>Kapacitivni otpor</h2>
+
+    <label>Frekvencija f (Hz)</label>
+    <input type="number" class="input capacitive-f">
+    <br>
+
+    <label>Kapacitet C (F)</label>
+    <input type="number" class="input capacitive-c">
+    <br>
+
+    <button class="btn capacitive-x-calc">Izračunaj X<sub>C</sub></button>
+    <br>
+
+    <p>X<sub>C</sub> (Ω): <span class="result capacitive-xc"></span></p>
+    <br>
+</section>
+
+</body>
+</html>
