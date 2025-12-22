@@ -4,6 +4,126 @@
     <meta charset="UTF-8">
     <title>Elektrotehnički kalkulator</title>
 </head>
+
+
+
+<style>
+
+
+img {
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+
+    .btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+    .ohmov-zakon,
+.dijelilo-napona {
+    border-width: 3px;
+    background-color: #fff5f7;
+}
+
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f2f4;
+        color: #3b0a14;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #7a1424;
+        margin-bottom: 40px;
+    }
+
+    h2, h3 {
+        color: #5c0f1d;
+    }
+
+    .section {
+        background-color: #ffffff;
+        border: 2px solid #7a1424;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 700px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .input {
+        padding: 8px;
+        width: 200px;
+        border-radius: 6px;
+        border: 1px solid #7a1424;
+        margin-top: 5px;
+    }
+
+    .btn {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #7a1424;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .btn:hover {
+        background-color: #5c0f1d;
+    }
+
+    .result {
+        font-weight: bold;
+        color: #7a1424;
+    }
+
+    img {
+        display: block;
+        margin: 20px auto 0 auto;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    hr {
+        border: none;
+        height: 2px;
+        background-color: #7a1424;
+        max-width: 700px;
+        margin: 40px auto;
+    }
+
+    small.help {
+        display: block;
+        margin-top: 10px;
+        color: #555;
+        font-size: 12px;
+    }
+</style>
+
 <body>
 
 <h1 class="title">Elektrotehnički kalkulator</h1>
@@ -195,7 +315,7 @@
     <p>Induktivitet L (H): <span class="result coil-l-result"></span></p>
     <br>
 
-    <small class="help">formula L = μ·N²·S/l koristi SI jedinice (S u m², l u m). Ako se unosi u cm/cm², skripta treba pretvoriti vrijednosti u m/m² prije izračuna.</small>
+  
 </section>
 
 
@@ -242,6 +362,15 @@
     <p>X<sub>C</sub> (Ω): <span class="result capacitive-xc"></span></p>
     <br>
 </section>
+
+<div style="text-align:center; margin:40px;">
+    <button class="btn" onclick="clearAll()">Obriši sva polja</button>
+</div>
+
+
+
+<script src="./index.js"></script>
+
 
 </body>
 </html>
