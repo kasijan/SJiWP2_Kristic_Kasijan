@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kamen Škare Papir</title>
+      <style>
+
+        .container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 320px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #003366;
+}
+
+h1 {
+    margin-bottom: 25px;
+    color: #003366;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    margin: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #1e88e5;
+    color: white;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1565c0;
+    transform: scale(1.05);
+}
+
+#rezultat {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    min-height: 60px;
+    color: #0d47a1;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Kamen, Škare, Papir</h1>
+
+    <div class="buttons">
+        <button onclick="igra('kamen')">Kamen</button>
+        <button onclick="igra('skare')">Škare</button>
+        <button onclick="igra('papir')">Papir</button>
+    </div>
+
+    <div id="rezultat"></div>
+</div>
+
+    <script src="./kamen.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Converter</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .converter {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2a5298;
+    }
+
+    .result {
+      font-size: 16px;
+      margin: 8px 0;
+      color: #333;
+    }
+
+    .value {
+      font-weight: bold;
+      color: #2a5298;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="converter">
+    <h1>Bitcoin Converter</h1>
+
+    <label for="inputBitcoin">Bitcoin</label>
+    <input
+      id="inputBitcoin"
+      type="number"
+      placeholder="Enter BTC"
+      oninput="currencyConverter(this.value)"
+      onchange="currencyConverter(this.value)"
+    >
+
+    <p class="result">Dollar: <span class="value" id="outputBitcoin">0.00</span></p>
+    <p class="result">Euro: <span class="value" id="outputBitcoin1">0.00</span></p>
+  </div>
+
+  <script src="./currency.js"></script>
+</body>
+</html>
