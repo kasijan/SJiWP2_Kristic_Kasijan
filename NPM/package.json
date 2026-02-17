@@ -1,0 +1,15 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "prvi_npm_paket",
+  "license": "ISC",
+  "author": "Kasijan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "sillyname": "^0.1.0"
+  }
+}
