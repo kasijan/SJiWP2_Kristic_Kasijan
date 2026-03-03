@@ -1,17 +1,33 @@
 
 
 import inquirer from 'inquirer';
+import fs from 'fs';
 
 inquirer
-  .prompt([{
+  .prompt([
+    {
+
     type: "input",
-    name: "ime: ",
+    name: "ime",
     message: "Unesi ime učenika: ",
 
   },
+  {
+
+    type: "number",
+    name: "ocjena",
+    message: "Unesite ocjenu: "
+
+  }
+
   ])
   .then((answers) => {
-    // Use user feedback for... whatever!!
+
+    const tekst = `Ime: ${answers.ime}, Ocjena: ${answers.ocjena}\n`;
+
+    fs.appendFileSync("ucenici.txt", tekst);
+    console.log("Podaci su spremljeni u datoteku.");
+    
   })
   .catch((error) => {
     if (error.isTtyError) {
