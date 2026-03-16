@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineVault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --card: #16161f;
+      --border: #2a2a3a;
+      --gold: #c9a84c;
+      --gold-dim: #8a6e2e;
+      --white: #f0ede8;
+      --muted: #6b6880;
+      --accent: #e85d4a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Crimson Pro', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: .35;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, var(--gold) 0%, #f5d98b 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-top: 8px;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 36px 20px 0;
+      position: relative; z-index: 1;
+    }
+    .tab-btn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      padding: 12px 40px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .tab-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--gold-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tab-btn:hover { color: var(--white); border-color: var(--gold-dim); }
+    .tab-btn:hover::before { opacity: 0.15; }
+    .tab-btn.active {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.07);
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
+      background: var(--gold);
+    }
+
+    /* ── GRID ── */
+    .section { display: none; padding: 40px 40px 80px; position: relative; z-index: 1; }
+    .section.active { display: block; animation: fadeUp 0.5s ease both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-dim), transparent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 2/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--gold-dim);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.2);
+    }
+    .card-poster {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+    .card-poster img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-poster img { transform: scale(1.06); }
+    .card-poster .poster-fallback {
+      font-size: 4rem;
+    }
+    .card-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+    }
+    .card-body {
+      position: relative; z-index: 2;
+      padding: 16px 14px 14px;
+    }
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .card-year {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .card-rating {
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin-left: auto;
+    }
+    .card-genre {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      margin-top: 7px;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      max-width: 640px;
+      width: 100%;
+      position: relative;
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+      overflow: hidden;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-top {
+      position: relative;
+      height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem;
+      overflow: hidden;
+    }
+    .modal-top-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .modal-top img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      z-index: 1;
+    }
+    .modal-top-emoji { position: relative; z-index: 1; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.6)); }
+    .modal-top::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to top, var(--surface), transparent);
+      z-index: 2;
+    }
+    .modal-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--accent);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .modal-content { padding: 24px 32px 32px; }
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      line-height: 1;
+    }
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .modal-stats {
+      display: flex;
+      gap: 24px;
+      margin: 20px 0;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .modal-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #c8c4be;
+      font-weight: 300;
+    }
+    .modal-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 20px;
+    }
+    .modal-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+    }
+    .modal-close {
+      position: absolute; top: 14px; left: 14px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 1.2rem;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: all 0.2s;
+    }
+    .modal-close:hover { color: var(--white); border-color: var(--white); }
+
+    @media (max-width: 600px) {
+      .tabs { flex-direction: column; align-items: center; }
+      .tab-btn { width: 240px; text-align: center; }
+      .section { padding: 30px 16px 60px; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+      .modal-content { padding: 18px 20px 24px; }
+      .modal-stats { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CineVault</div>
+  <p class="tagline">Vaš vodič kroz filmski svemir</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('filmovi')">🎬 Filmovi</button>
+  <button class="tab-btn" onclick="showTab('serije')">📺 Serije</button>
+  <button class="tab-btn" onclick="showTab('dokumentarci')">🎥 Dokumentarci</button>
+</div>
+
+<div id="filmovi" class="section active">
+  <div class="section-title">Filmovi</div>
+  <div class="grid" id="grid-filmovi"></div>
+</div>
+<div id="serije" class="section">
+  <div class="section-title">Serije</div>
+  <div class="grid" id="grid-serije"></div>
+</div>
+<div id="dokumentarci" class="section">
+  <div class="section-title">Dokumentarci</div>
+  <div class="grid" id="grid-dokumentarci"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-top">
+      <div class="modal-top-bg"></div>
+      <div class="modal-top-emoji" id="modalEmoji">🎬</div>
+      <div class="modal-badge" id="modalBadge">Film</div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-title" id="modalTitle">Naslov</div>
+      <div class="modal-subtitle" id="modalSubtitle">Originalni naslov</div>
+      <div class="modal-stats">
+        <div class="stat"><div class="stat-val" id="modalYear">2024</div><div class="stat-label">Godina</div></div>
+        <div class="stat"><div class="stat-val" id="modalRating">⭐ 8.5</div><div class="stat-label">Ocjena</div></div>
+        <div class="stat"><div class="stat-val" id="modalDuration">120 min</div><div class="stat-label">Trajanje</div></div>
+        <div class="stat"><div class="stat-val" id="modalDirector">Redatelj</div><div class="stat-label">Redatelj</div></div>
+      </div>
+      <p class="modal-desc" id="modalDesc">Opis filma...</p>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
