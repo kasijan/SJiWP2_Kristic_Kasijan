@@ -30,7 +30,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ── */
+
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -38,7 +38,7 @@
       pointer-events: none; z-index: 0; opacity: .35;
     }
 
-    /* ── HEADER ── */
+
     header {
       position: relative;
       text-align: center;
@@ -72,7 +72,7 @@
       font-style: italic;
     }
 
-    /* ── TABS ── */
+
     .tabs {
       display: flex;
       justify-content: center;
@@ -113,7 +113,7 @@
       background: var(--gold);
     }
 
-    /* ── GRID ── */
+
     .section { display: none; padding: 40px 40px 80px; position: relative; z-index: 1; }
     .section.active { display: block; animation: fadeUp 0.5s ease both; }
 
@@ -145,7 +145,7 @@
       gap: 20px;
     }
 
-    /* ── CARD ── */
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -221,7 +221,7 @@
       margin-top: 7px;
     }
 
-    /* ── MODAL ── */
+
     .modal-overlay {
       display: none;
       position: fixed; inset: 0;
@@ -392,7 +392,7 @@
   <div class="grid" id="grid-dokumentarci"></div>
 </div>
 
-<!-- MODAL -->
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModalBtn()">✕</button>
