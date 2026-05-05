@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Učenje</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1 onclick="goHome()">⚡ E-Učenje</h1>
+</header>
+
+<section id="home">
+<h2>Odaberi predmet</h2>
+
+<div class="grid">
+<div class="card" onclick="selectSubject('matematika')">Matematika</div>
+<div class="card" onclick="selectSubject('fizika')">Fizika</div>
+</div>
+</section>
+
+<section id="lessons" class="hidden">
+<h2 id="subjectTitle"></h2>
+<div id="lessonList"></div>
+<button onclick="goHome()">← Početna</button>
+</section>
+
+<section id="lessonView" class="hidden">
+<h2 id="lessonTitle"></h2>
+<p id="lessonIntro"></p>
+
+<div id="lessonContent"></div>
+
+<h3>Sažetak</h3>
+<ul id="summary"></ul>
+
+<button onclick="goBack()">← Nazad</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
