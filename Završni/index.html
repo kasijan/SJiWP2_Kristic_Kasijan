@@ -1,43 +1,79 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Učenje</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Učenje</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-<h1 onclick="goHome()">⚡ E-Učenje</h1>
+  <div class="header-inner">
+    <span class="logo" onclick="goHome()">⚡ E-Učenje</span>
+    <nav class="breadcrumb" id="breadcrumb"></nav>
+  </div>
 </header>
 
+<!-- POČETNA -->
 <section id="home">
-<h2>Odaberi predmet</h2>
-
-<div class="grid">
-<div class="card" onclick="selectSubject('matematika')">Matematika</div>
-<div class="card" onclick="selectSubject('fizika')">Fizika</div>
-</div>
+  <div class="hero">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <p class="hero-label">Interaktivna platforma za učenje</p>
+    <h2 class="hero-title">Odaberi <span class="gradient-text">predmet</span></h2>
+    <p class="hero-sub">Klikni na predmet i počni savladavati gradivo korak po korak.</p>
+  </div>
+  <div class="grid">
+    <div class="card card-math" onclick="selectSubject('matematika')">
+      <div class="card-icon">&#8721;</div>
+      <div class="card-title">Matematika</div>
+      <div class="card-desc">Jednadžbe, derivacije, trigonometrija i geometrija.</div>
+      <div class="card-footer">
+        <span class="pill pill-math">6 lekcija</span>
+        <span class="card-arrow">&#8594;</span>
+      </div>
+    </div>
+    <div class="card card-phys" onclick="selectSubject('fizika')">
+      <div class="card-icon">&#9883;</div>
+      <div class="card-title">Fizika</div>
+      <div class="card-desc">Sile, energija, elektricitet i mehanika.</div>
+      <div class="card-footer">
+        <span class="pill pill-phys">6 lekcija</span>
+        <span class="card-arrow">&#8594;</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- LISTA LEKCIJA -->
 <section id="lessons" class="hidden">
-<h2 id="subjectTitle"></h2>
-<div id="lessonList"></div>
-<button onclick="goHome()">← Početna</button>
+  <div class="view-inner">
+    <div class="view-header">
+      <span class="badge" id="subjectBadge"></span>
+      <h2 id="subjectTitle"></h2>
+      <p class="view-sub">Odaberi lekciju koju želiš proučiti</p>
+    </div>
+    <div id="lessonList"></div>
+    <button class="btn-back" onclick="goHome()">&#8592; Početna</button>
+  </div>
 </section>
 
+<!-- GRADIVO LEKCIJE -->
 <section id="lessonView" class="hidden">
-<h2 id="lessonTitle"></h2>
-<p id="lessonIntro"></p>
-
-<div id="lessonContent"></div>
-
-<h3>Sažetak</h3>
-<ul id="summary"></ul>
-
-<button onclick="goBack()">← Nazad</button>
+  <div class="view-inner">
+    <div class="view-header">
+      <span class="badge" id="lessonBadge"></span>
+      <h2 id="lessonTitle"></h2>
+      <p id="lessonIntro" class="lesson-intro"></p>
+    </div>
+    <div id="lessonContent"></div>
+    <div class="summary-box hidden" id="summaryBox">
+      <div class="summary-title">&#128204; Sažetak lekcije</div>
+      <ul id="summary"></ul>
+    </div>
+    <button class="btn-back" onclick="goBack()">&#8592; Nazad na lekcije</button>
+  </div>
 </section>
 
 <script src="script.js"></script>
